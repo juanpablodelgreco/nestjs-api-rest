@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Inject, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Inject,
+  Post,
+  Query,
+} from '@nestjs/common';
+import { HttpCodesEnum } from 'src/enums/HttpCodesEnum';
 import { CreateCarRequest } from 'src/interfaces/request/cars/CreateCarRequest';
 import { GetAllCarsQuery } from 'src/interfaces/request/cars/GetAllCarsQuery';
 import {
@@ -12,11 +21,13 @@ export class CarController {
   constructor(@Inject(CAR_SERVICE) private readonly carService: CarService) {}
 
   @Get()
+  @HttpCode(HttpCodesEnum.OK)
   getAll(@Query() filters: GetAllCarsQuery): Promise<Car[]> {
     return this.carService.getAll(filters);
   }
 
   @Post()
+  @HttpCode(HttpCodesEnum.CREATED)
   create(@Body() request: CreateCarRequest): Promise<Car> {
     return this.carService.create(request);
   }
