@@ -2,9 +2,13 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CarControllerImpl } from './controllers/CarControllerImp';
+import { CarControllerImpl } from './controllers/CarController';
 import { ConfigModule } from '@nestjs/config';
 import { Car, CarSchema } from './models/Car';
+import { CAR_REPOSITORY } from './interfaces/repositories/CarRepository';
+import { CarRepositoryImp } from './repositories/CarRepositoryImp';
+import { CAR_SERVICE } from './interfaces/services/cars/CarService';
+import { CarServiceImp } from './services/CarServiceImp';
 
 @Module({
   imports: [
@@ -20,6 +24,10 @@ import { Car, CarSchema } from './models/Car';
     ]),
   ],
   controllers: [AppController, CarControllerImpl],
-  providers: [AppService],
+  providers: [
+    AppService,
+    { provide: CAR_REPOSITORY, useClass: CarRepositoryImp },
+    { provide: CAR_SERVICE, useClass: CarServiceImp },
+  ],
 })
 export class AppModule {}
