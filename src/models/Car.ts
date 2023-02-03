@@ -4,27 +4,47 @@ import { GasEnum } from 'src/enums/cars/GasEnum';
 
 @Schema()
 export class Car extends Document {
-  @Prop()
+  @Prop({
+    type: String,
+    required: true,
+  })
   brand: string;
 
-  @Prop()
+  @Prop({
+    type: String,
+    required: true,
+  })
   model: string;
 
-  @Prop()
+  @Prop({
+    type: Number,
+    required: true,
+  })
   year: number;
 
-  @Prop()
+  @Prop({
+    type: String,
+    required: true,
+  })
   color: string;
 
   @Prop({
-    type: GasEnum,
+    enum: GasEnum,
+    required: true,
   })
   gas: GasEnum;
 
-  @Prop()
+  @Prop({
+    type: Number,
+    required: true,
+  })
   price: number;
 
-  @Prop()
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: true,
+  })
   enabled: boolean;
 }
 
