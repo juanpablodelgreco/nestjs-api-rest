@@ -1,4 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DuplicatedException } from 'src/errors/DuplicatedException';
 import {
   CarRepository,
   CAR_REPOSITORY,
@@ -25,7 +26,7 @@ export class CarServiceImp implements CarService {
       brand,
       model,
     } as GetOneRequest);
-    if (car) throw new Error('Duplicated car.');
+    if (car) throw new DuplicatedException(`${brand}, ${model}`);
 
     return this.carRepository.create(request);
   }
