@@ -8,6 +8,5 @@ export class PaginationRequest {
 
   @IsOptional()
   @IsNumber()
-  @IsPositive()
   offset = 0;
 }

@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { GasEnum } from 'src/enums/cars/GasEnum';
 
-@Schema()
+@Schema({ timestamps: true })
 export class Car extends Document {
   @Prop({
     type: String,

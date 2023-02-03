@@ -11,8 +11,10 @@ export class CarRepositoryImp implements CarRepository {
 
   async getAll(filters: GetAllCarsQuery): Promise<Car[]> {
     const { limit, offset } = filters;
-
-    return this.carModel.find(filters).limit(limit).skip(offset);
+    return this.carModel
+      .find({ ...filters, enabled: true })
+      .limit(limit)
+      .skip(offset);
   }
 
   async create(request: CreateCarRequest): Promise<Car> {

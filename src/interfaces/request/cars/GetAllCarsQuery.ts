@@ -13,25 +13,25 @@ export class GetAllCarsQuery extends PaginationRequest {
   @IsOptional()
   @IsNotEmpty()
   @IsString()
-  brand: string;
+  brand?: string;
 
   @IsOptional()
   @IsNotEmpty()
   @IsString()
-  model: string;
+  model?: string;
 
   @IsOptional()
   @IsNumber()
   @IsPositive()
-  year: number;
+  year?: number;
 
   @IsOptional()
   @IsNotEmpty()
   @IsString()
-  color: string;
+  color?: string;
 
   @IsOptional()
   @IsNotEmpty()
   @IsEnum(GasEnum)
-  gas: GasEnum;
+  gas?: GasEnum;
 }
