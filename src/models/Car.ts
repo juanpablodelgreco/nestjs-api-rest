@@ -47,5 +47,5 @@ export class Car extends Document {
   })
   enabled: boolean;
 }
-
 export const CarSchema = SchemaFactory.createForClass(Car);
+CarSchema.index({ brand: 1, model: 1 }, { unique: true });
