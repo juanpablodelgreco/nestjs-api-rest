@@ -8,6 +8,7 @@ import { CarRepositoryImp } from './repositories/CarRepositoryImp';
 import { CAR_SERVICE } from './interfaces/services/cars/CarService';
 import { CarServiceImp } from './services/CarServiceImp';
 import { getEnvironmentVariable } from './utils/ConfigHelper';
+import { ParseMongoIdPipe } from './pipes/ParseMongoIdPipe';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { getEnvironmentVariable } from './utils/ConfigHelper';
   providers: [
     { provide: CAR_REPOSITORY, useClass: CarRepositoryImp },
     { provide: CAR_SERVICE, useClass: CarServiceImp },
+    ParseMongoIdPipe,
   ],
 })
 export class AppModule {}

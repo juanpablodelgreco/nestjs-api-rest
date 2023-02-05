@@ -13,7 +13,9 @@ async function bootstrap() {
   const port = getEnvironmentVariable('APP_PORT') || 3000;
 
   app.setGlobalPrefix('ms-car-rest/api/v1.0');
-  app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
+  app.useGlobalPipes(
+    new ValidationPipe({ transform: true, forbidNonWhitelisted: true }),
+  );
   app.useGlobalFilters(new HttpExceptionFilter());
 
   const config = new DocumentBuilder()
