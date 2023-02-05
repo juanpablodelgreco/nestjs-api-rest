@@ -7,6 +7,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { HttpCodesEnum } from 'src/enums/HttpCodesEnum';
 import { CreateCarRequest } from 'src/interfaces/request/cars/CreateCarRequest';
 import { GetAllCarsQuery } from 'src/interfaces/request/cars/GetAllCarsQuery';
@@ -16,6 +17,7 @@ import {
 } from 'src/interfaces/services/cars/CarService';
 import { Car } from 'src/models/Car';
 
+@ApiTags('Cars')
 @Controller('cars')
 export class CarController {
   constructor(@Inject(CAR_SERVICE) private readonly carService: CarService) {}

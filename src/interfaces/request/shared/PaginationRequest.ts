@@ -1,12 +1,17 @@
-import { IsNumber, IsOptional, IsPositive } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { IsInt, IsOptional } from 'class-validator';
 
 export class PaginationRequest {
+  @ApiProperty({ type: Number, example: 0, required: false, default: 0 })
   @IsOptional()
-  @IsNumber()
-  @IsPositive()
+  @IsInt()
+  @Type(() => Number)
   limit = 10;
 
+  @ApiProperty({ type: Number, example: 0, required: false, default: 0 })
   @IsOptional()
-  @IsNumber()
+  @IsInt()
+  @Type(() => Number)
   offset = 0;
 }
