@@ -22,7 +22,6 @@ async function bootstrap() {
     .setTitle('Cars rest api')
     .setDescription('This is a car rest api.')
     .setVersion('1.0')
-    .addTag('cars')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('ms-car-rest/api/docs', app, document);

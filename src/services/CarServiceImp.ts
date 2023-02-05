@@ -28,15 +28,28 @@ export class CarServiceImp implements CarService {
       brand,
       model,
     } as GetOneRequest);
+
     if (car) throw new DuplicatedException(`${brand}, ${model}`);
 
     return this.carRepository.create(request);
   }
 
   async update(uuid: string, request: UpdateCarRequest): Promise<Car> {
-    const car = await this.carRepository.getOne({ _id: uuid } as GetOneRequest);
+    const car = await this.carRepository.getOne({
+      _id: uuid,
+    } as GetOneRequest);
     if (!car) throw new NotFoundException(uuid);
 
     return this.carRepository.update(car, request);
+  }
+
+  async delete(uuid: string): Promise<void> {
+    const car = await this.carRepository.getOne({
+      _id: uuid,
+    } as GetOneRequest);
+    console.log(car);
+    if (!car) throw new NotFoundException(uuid);
+
+    await this.carRepository.delete(car);
   }
 }

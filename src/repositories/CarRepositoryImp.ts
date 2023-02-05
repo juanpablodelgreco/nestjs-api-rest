@@ -23,11 +23,15 @@ export class CarRepositoryImp implements CarRepository {
   }
 
   async getOne(filters: GetOneRequest): Promise<Car> {
-    return this.carModel.findOne({ ...filters });
+    return this.carModel.findOne({ ...filters, enabled: true });
   }
 
   async update(car: Car, request: UpdateCarRequest): Promise<Car> {
     await car.updateOne(request);
     return this.carModel.findById(car._id);
+  }
+
+  async delete(car: Car): Promise<void> {
+    await car.update({ enabled: false });
   }
 }

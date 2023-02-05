@@ -9,4 +9,5 @@ export interface CarService {
   getAll(filters: GetAllCarsQuery): Promise<Car[]>;
   create(request: CreateCarRequest): Promise<Car>;
   update(uuid: string, request: UpdateCarRequest): Promise<Car>;
+  delete(uuid: string): Promise<void>;
 }

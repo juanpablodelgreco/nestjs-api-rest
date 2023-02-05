@@ -11,4 +11,5 @@ export interface CarRepository {
   create(request: CreateCarRequest): Promise<Car>;
   getOne(filters: GetOneRequest): Promise<Car>;
   update(car: Car, request: UpdateCarRequest): Promise<Car>;
+  delete(car: Car): Promise<void>;
 }
