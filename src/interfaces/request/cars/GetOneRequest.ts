@@ -1,12 +1,11 @@
 import { IsOptional, IsUUID } from 'class-validator';
 import { IsNotEmpty, IsString } from 'class-validator';
-import { PaginationRequest } from '../shared/PaginationRequest';
 
-export class GetOneRequest extends PaginationRequest {
+export class GetOneRequest {
   @IsOptional()
   @IsNotEmpty()
   @IsUUID()
-  id: string;
+  _id: string;
 
   @IsOptional()
   @IsNotEmpty()

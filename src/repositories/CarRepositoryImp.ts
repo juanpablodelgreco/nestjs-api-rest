@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateCarRequest } from 'src/interfaces/request/cars/CreateCarRequest';
 import { GetOneRequest } from 'src/interfaces/request/cars/GetOneRequest';
+import { UpdateCarRequest } from 'src/interfaces/request/cars/UpdateCarRequest';
 
 export class CarRepositoryImp implements CarRepository {
   constructor(@InjectModel(Car.name) private readonly carModel: Model<Car>) {}
@@ -23,5 +24,10 @@ export class CarRepositoryImp implements CarRepository {
 
   async getOne(filters: GetOneRequest): Promise<Car> {
     return this.carModel.findOne({ ...filters });
+  }
+
+  async update(car: Car, request: UpdateCarRequest): Promise<Car> {
+    await car.updateOne(request);
+    return this.carModel.findById(car._id);
   }
 }
