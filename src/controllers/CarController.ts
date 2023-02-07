@@ -19,7 +19,7 @@ import { BaseResponse } from 'src/interfaces/responses/BaseResponse';
 import {
   CarService,
   CAR_SERVICE,
-} from 'src/interfaces/services/cars/CarService';
+} from 'src/interfaces/services/CarService';
 import { Car } from 'src/models/Car';
 import { ParseMongoIdPipe } from 'src/pipes/ParseMongoIdPipe';
 

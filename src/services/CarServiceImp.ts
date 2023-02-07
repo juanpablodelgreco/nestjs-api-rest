@@ -9,7 +9,7 @@ import { CreateCarRequest } from 'src/interfaces/request/cars/CreateCarRequest';
 import { GetAllCarsQuery } from 'src/interfaces/request/cars/GetAllCarsQuery';
 import { GetOneRequest } from 'src/interfaces/request/cars/GetOneRequest';
 import { UpdateCarRequest } from 'src/interfaces/request/cars/UpdateCarRequest';
-import { CarService } from 'src/interfaces/services/cars/CarService';
+import { CarService } from 'src/interfaces/services/CarService';
 import { Car } from 'src/models/Car';
 
 @Injectable()
@@ -47,7 +47,6 @@ export class CarServiceImp implements CarService {
     const car = await this.carRepository.getOne({
       _id: uuid,
     } as GetOneRequest);
-    console.log(car);
     if (!car) throw new NotFoundException(uuid);
 
     await this.carRepository.delete(car);

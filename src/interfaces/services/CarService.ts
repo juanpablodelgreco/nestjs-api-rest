@@ -1,7 +1,7 @@
 import { CreateCarRequest } from 'src/interfaces/request/cars/CreateCarRequest';
 import { UpdateCarRequest } from 'src/interfaces/request/cars/UpdateCarRequest';
 import { Car } from 'src/models/Car';
-import { GetAllCarsQuery } from '../../request/cars/GetAllCarsQuery';
+import { GetAllCarsQuery } from '../request/cars/GetAllCarsQuery';
 
 export const CAR_SERVICE = 'ICarService';
 
